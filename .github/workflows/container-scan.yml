@@ -8,6 +8,7 @@ jobs:
   build-and-scan:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         service: [vote, result, worker]
     steps:
