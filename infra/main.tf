@@ -35,6 +35,13 @@ module "eks" {
   cluster_name    = "voting-app-cluster"
   cluster_version = "1.35"
 
+  # Explicitly enable public endpoint access — without this, kubectl from outside
+  # the VPC (e.g. your own laptop) may resolve the cluster's private endpoint IP
+  # and time out, since there's no network route from your machine into the VPC.
+  cluster_endpoint_public_access  = true
+  cluster_endpoint_private_access = true
+
+
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.public_subnets
 
