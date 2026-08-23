@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worker
+  template:
+    metadata:
+      labels:
+        app: worker
+    spec:
+      containers:
+        - name: worker
+          image: 681885730059.dkr.ecr.us-east-1.amazonaws.com/voting-app/worker:ce4c74ea9da70f659a1a1f42931d23fdad2ae590

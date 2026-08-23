@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vote
+spec:
+  replicas: 1   # kept at 1, not 2, due to t3.micro's constrained memory — see note above
+  selector:
+    matchLabels:
+      app: vote
+  template:
+    metadata:
+      labels:
+        app: vote
+    spec:
+      containers:
+        - name: vote
+          image: 681885730059.dkr.ecr.us-east-1.amazonaws.com/voting-app/vote:ce4c74ea9da70f659a1a1f42931d23fdad2ae590
+          ports:
+            - containerPort: 80
