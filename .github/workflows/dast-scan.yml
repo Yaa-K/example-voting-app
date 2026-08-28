@@ -1,0 +1,17 @@
+name: DAST Scan
+
+on:
+  workflow_dispatch:
+
+jobs:
+  zap-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.12.0
+        with:
+          # Hardcoded load balancer URL for the vote service.
+          # If it changes, get the current one with:
+          #   kubectl get svc vote -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+          target:  'http://a3201253b2a414e379b72fae5118e4ca-1707207753.us-east-1.elb.amazonaws.com'
+          
