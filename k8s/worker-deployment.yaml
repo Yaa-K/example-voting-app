@@ -15,3 +15,8 @@ spec:
       containers:
         - name: worker
           image: 681885730059.dkr.ecr.us-east-1.amazonaws.com/voting-app/worker:b180fa05da481663eb4c44773f50b3ff0ecd9dc2
+          resources:
+            limits:
+              memory: "256Mi"
+            requests:
+              memory: "64Mi"
