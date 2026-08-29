@@ -3,6 +3,10 @@ name: DAST Scan
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   zap-scan:
     runs-on: ubuntu-latest
